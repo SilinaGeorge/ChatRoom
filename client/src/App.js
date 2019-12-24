@@ -11,8 +11,7 @@ function App() {
     <Router>
       <Route path='/' exact component={Home} />
       <Route path='/Room' exact component={Room} />
-    </Router>
-    
+    </Router>    
   );
 }
 
