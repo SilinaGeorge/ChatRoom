@@ -1,6 +1,6 @@
 ## How to run
-- Go to /ChatRoom/client, run `npm start`, browser will open up to http://localhost:3000<br />
-- Go to /ChatRoom/server, run `nodemon app.js`, local server is now hosting on port 5000<br />
+- Go to /ChatRoom/client, run `npm install` then `npm start`, browser will open up to http://localhost:3000<br />
+- Go to /ChatRoom/server, run `npm install` then `nodemon app.js`, local server is now hosting on port 5000<br />
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
