@@ -1,6 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import io from 'socket.io-client'
+import './Room.css';
+
+import Header from '../Header/Header'
+import MessageBar from '../MessageBar/MessageBar'
+import DisplayMessages from '../DisplayMessages/DisplayMessages'
+
 
 let socket;
 
@@ -32,15 +38,15 @@ const Room = () =>{
             socket.off() // turn off instance of socket
         }
 
-    },[URL, usernameSelector, roomnameSelector]); // useEffect will only execute of these 3 variables change
+    },[URL, usernameSelector, roomnameSelector]); // useEffect will only execute when any of these 3 variables change
 
-    // update messages 
+    // listen for new messages 
     useEffect(()=>{
         socket.on('message',(message)=>{
             setMessages([...messages, message])
 
-        }, [messages])
-    })
+        })
+    }, [messages])
 
     //send message
     const sendMessage = (event) =>{
@@ -56,15 +62,9 @@ const Room = () =>{
 
     return (
         <div>
-            <div>
-                <input value={message}
-                onChange={(event)=> setMessage(event.target.value)}
-                onKeyPress={(event) => event.key == 'Enter'? sendMessage(event): null}
-                
-                />
-                    
-               
-            </div>
+            <Header roomname={roomname}></Header>
+            <DisplayMessages messages={messages} username={username}></DisplayMessages>
+            <MessageBar message={message} setMessage ={setMessage} sendMessage={sendMessage}></MessageBar>
         </div>
     )
 }
