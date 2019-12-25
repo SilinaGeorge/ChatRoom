@@ -4,6 +4,8 @@ const socketio = require('socket.io');
 const http = require('http');
 const router = require('./router');
 
+const {addUser, getUser, removeUser, getRoomUsers} = require( './users.js')
+
 const app = express();
 
 // create socket and server
@@ -12,6 +14,32 @@ const io = socketio(server);
 
 io.on('connection', (socket)=>{
     console.log('new socket connection')
+
+    socket.on('enter', ({username, roomname}, callback) =>{
+        const {error, newUser} = addUser({id: socket.id, username, roomname})
+
+        if (error) return callback({error})
+
+        // send message to new user
+        socket.emit('message', {user: 'auto', text:`${newUser.username} Welcome to ${newUser.roomname}`})
+        
+        // send everyone in the room a message except new user
+        socket.broadcast.to(newUser.roomname).emit('message',{user:'auto', text:`${newUser.username} has joined the chat`})
+        
+        //joins user in a room
+        socket.join(newUser.roomname)
+
+        callback();
+        
+    })
+
+    socket.on('sendMessage', (message, callback) =>{
+        const user = getUser(socket.id)
+
+        io.to(user.roomname).emit('message',{user: user.username, message});
+
+        callback();
+    })
 
     socket.on('disconnect', () =>{
         console.log('socket has been disconnected')
