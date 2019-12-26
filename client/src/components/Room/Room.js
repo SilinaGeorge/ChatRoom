@@ -77,7 +77,7 @@ const Room = () => {
                 <Header roomname={roomname}></Header>
             </div>
             <div className='row'>
-                <div className='col-2'>
+                <div className='col-2 bg-dark'>
                     <UserList userList={users}></UserList>
                 </div>
 
