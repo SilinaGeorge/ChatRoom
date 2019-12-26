@@ -3,7 +3,7 @@ import React from 'react'
 const UserList = ({roomname, userList}) => (
    userList.users
    ?
-       <div style={{ height:window.innerHeight - 85 + 'px', overflowY:'auto', wordWrap:'break-word' }}>
+       <div style={{ height:window.innerHeight - 120 + 'px', overflowY:'auto', wordWrap:'break-word' }}>
           <h5 style={{textAlign:'center'}}>Users in {roomname}</h5>
           <ul>
          {
@@ -16,31 +16,6 @@ const UserList = ({roomname, userList}) => (
          
          
       }
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
-
-       <li>testestestestestestestest</li>
-       <li>testestestestestestestest</li>
       </ul>
 
         

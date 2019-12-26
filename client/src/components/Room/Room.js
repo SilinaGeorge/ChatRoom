@@ -83,9 +83,13 @@ const Room = () => {
 
                 <div className='col-10'>
                     <DisplayMessages messages={messages} username={username}></DisplayMessages>
-                    <MessageBar message={message} setMessage={setMessage} sendMessage={sendMessage}></MessageBar>
+                   
 
                 </div>
+            </div>
+            <div>
+            <MessageBar message={message} setMessage={setMessage} sendMessage={sendMessage}></MessageBar>
+
             </div>
 
         </div>
