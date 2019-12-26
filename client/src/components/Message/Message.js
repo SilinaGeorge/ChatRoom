@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactEmoji from 'react-emoji'
 
 const Message = ({ message: { username, text }, currentUser }) => {
     let isSentByCurrentUser = false;
@@ -12,24 +13,28 @@ const Message = ({ message: { username, text }, currentUser }) => {
     return (
         isSentByCurrentUser
             ? (
-                <div class="card text-white bg-info mb-3 d-flex flex-row">
-                    <div class="card-body">
-                        <p class="card-text">
-                            <small class="text-muted">{currentUser}</small>
-                            {text}
-                        </p>
+                <div className='d-flex flex-row'>
+                    <small style={{align:'center !important'}}>{currentUser}:</small>
+                    <div className="card text-white bg-info mb-3 " style={{maxWidth: "40%", minWidth:'15%'}}>
+                            <p className="card-text" style={{margin:'2%'}}>
+                                {ReactEmoji.emojify(text)}
+                            </p>
+                      
                     </div>
                 </div>
             )
             : (
-                <div class="card bg-light mb-3 d-flex flex-row-reverse">
-                    <div class="card-body">
-                        <p class="card-text">
-                            <small class="text-muted">{username}</small>
-                            {text}
-                        </p>
+                <div className=' d-flex flex-row-reverse'>
+                    
+                    <div className="card bg-light mb-3" style={{maxWidth: '40%', minWidth:'15%'}}>
+                            <p className="card-text" style={{margin:'2%'}}>                   
+                                {ReactEmoji.emojify(text)}
+                            </p>
+                  
                     </div>
+                    <small style={{align:'center !important'}}>{username}:</small>
                 </div>
+
             )
     )
 }

@@ -21,13 +21,15 @@ io.on('connection', (socket)=>{
         if (error) return callback({error})
 
         // send message to new user
-        socket.emit('message', {username: 'auto', text:`Hi ${newUser.username} Welcome to ${newUser.roomname}`})
+        socket.emit('message', {username: 'auto', text:`Hi ${newUser.username} welcome to ${newUser.roomname}`})
         
         // send everyone in the room a message except new user
         socket.broadcast.to(newUser.roomname).emit('message',{username:'auto', text:`${newUser.username} has joined the chat`})
         
         //joins user in a room
         socket.join(newUser.roomname)
+
+        io.to(newUser.roomname).emit('usersInRoom', {roomname: newUser.roomname, users: getRoomUsers(newUser.roomname)})
 
         callback();
         
@@ -37,12 +39,18 @@ io.on('connection', (socket)=>{
         const user = getUser(socket.id)
 
         io.to(user.roomname).emit('message',{username: user.username, text:message});
+        io.to(user.roomname).emit('usersInRoom', {roomname: user.roomname, users: getRoomUsers(user.roomname)})
 
         callback();
     })
 
     socket.on('disconnect', () =>{
-        console.log('socket has been disconnected')
+        console.log('disconnected')
+        const user = removeUser(socket.id)
+
+        if (user){
+            io.to(user.roomname).emit('message', {username:'auto', text:`${user.username} has left the chat`})
+        }
     })
 
 });

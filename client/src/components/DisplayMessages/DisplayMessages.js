@@ -1,20 +1,23 @@
 import React from 'react'
-import ScrollToBottom from "react-scroll-to-bottom"
+import ScrollToBottom from 'react-scroll-to-bottom';
 import Message from '../Message/Message'
 
+
+
 const DisplayMessages = ({messages, username}) => (
- <ScrollToBottom>
+ 
+   <div style={{maxHeight:window.innerHeight - 120 + 'px', overflowY:'auto' }}>
          {
          messages.map((message, i) => (
             <div key={i}><Message message={message} currentUser={username}></Message></div>
          )
 
-    )
+         )
     }
         
-    
+   </div>
+  
 
- </ScrollToBottom>
 
     
 )
