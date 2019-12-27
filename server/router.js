@@ -5,7 +5,7 @@ const router = express.Router();
 express.static(path.join(__dirname, '../client/public'))
 
 router.get('/', (req,res) => {
-    res.sendFile("client/public/index.html");
+    res.sendFile("/index.html");
 });
 
 module.exports  = router
