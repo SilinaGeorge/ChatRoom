@@ -90,7 +90,7 @@ const Room = () => {
             </div>
             <div className='row'>
                 <div className='col-2 bg-dark'>
-                    <UserList userList={users}></UserList>
+                    <UserList userList={users} roomname={roomname}></UserList>
                 </div>
 
                 <div className='col-10'>
