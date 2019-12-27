@@ -2,7 +2,7 @@ import React from 'react'
 
 const MessageBar = ({message, setMessage, sendMessage}) => (
     <div className="input-group mb-3">
-    <input type="text" className="form-control" placeholder="type your message here"
+    <input type="text" className="form-control" placeholder="type your message here, use emojis too"
     value={message}
     onChange={(event)=> setMessage(event.target.value)}
     onKeyPress={(event) => event.key === 'Enter'? sendMessage(event): null}
