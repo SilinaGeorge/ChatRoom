@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import io from 'socket.io-client'
 import './Room.css';
-
 import Header from '../Header/Header'
 import MessageBar from '../MessageBar/MessageBar'
 import DisplayMessages from '../DisplayMessages/DisplayMessages'
@@ -24,14 +23,18 @@ const Room = () => {
     const roomnameSelector = useSelector((state) => state.roomname)
     const URL = 'localhost:5000'
 
+
+
     useEffect(() => {
         socket = io(URL)
 
         setUsername(usernameSelector)
         setRoomname(roomnameSelector)
-        console.log(socket)
-        socket.emit('enter', { username: usernameSelector, roomname: roomnameSelector }, () => {
-
+        socket.emit('enter', { username: usernameSelector, roomname: roomnameSelector }, (error) => {
+            if (error){
+                alert(error.error);
+                window.location = '/';
+            }
         });
 
         //unmounting
@@ -46,6 +49,7 @@ const Room = () => {
     useEffect(() => {
         socket.on('message', (message) => {
             setMessages([...messages, message])
+            scrolltoBottom()
 
         })
 
@@ -57,6 +61,11 @@ const Room = () => {
     }, [messages])
 
 
+    const scrolltoBottom =()=>{
+        var objDiv = document.getElementById("messagesDiv");
+        objDiv.scrollTop = objDiv.scrollHeight;
+
+    }
 
     //send message
     const sendMessage = (event) => {
@@ -65,8 +74,11 @@ const Room = () => {
         if (message) {
             socket.emit('sendMessage', message, () => {
                 setMessage('')
+                scrolltoBottom()
             })
+
         }
+
     }
 
 
@@ -83,8 +95,7 @@ const Room = () => {
 
                 <div className='col-10'>
                     <DisplayMessages messages={messages} username={username}></DisplayMessages>
-                   
-
+                
                 </div>
             </div>
             <div>
@@ -92,6 +103,7 @@ const Room = () => {
 
             </div>
 
+        
         </div>
 
     )

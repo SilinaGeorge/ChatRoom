@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactEmoji from 'react-emoji'
+const { Emojione } = require('react-emoji-render') ;
 
 const Message = ({ message: { username, text }, currentUser }) => {
     let isSentByCurrentUser = false;
@@ -15,9 +15,10 @@ const Message = ({ message: { username, text }, currentUser }) => {
             ? (
                 <div className='d-flex flex-row'>
                     <small style={{align:'center !important'}}>{currentUser}:</small>
-                    <div className="card text-white bg-info mb-3 " style={{maxWidth: "40%", minWidth:'15%'}}>
+                    <div className="card text-white bg-info mb-3 " style={{maxWidth: "40%", minWidth:'25%'}}>
                             <p className="card-text" style={{margin:'2%'}}>
-                                {ReactEmoji.emojify(text)}
+                            <Emojione text={text} />
+                         
                             </p>
                       
                     </div>
@@ -26,9 +27,9 @@ const Message = ({ message: { username, text }, currentUser }) => {
             : (
                 <div className=' d-flex flex-row-reverse'>
                     
-                    <div className="card bg-light mb-3" style={{maxWidth: '40%', minWidth:'15%'}}>
+                    <div className="card bg-light mb-3" style={{maxWidth: '40%', minWidth:'25%'}}>
                             <p className="card-text" style={{margin:'2%'}}>                   
-                                {ReactEmoji.emojify(text)}
+                            <Emojione text={text} />
                             </p>
                   
                     </div>

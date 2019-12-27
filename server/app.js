@@ -13,9 +13,11 @@ const server =http.createServer(app);
 const io = socketio(server);
 
 io.on('connection', (socket)=>{
-    console.log('new socket connection')
 
+    // user enters a room
     socket.on('enter', ({username, roomname}, callback) =>{
+
+        // add user to room
         const {error, newUser} = addUser({id: socket.id, username, roomname})
 
         if (error) return callback({error})
@@ -29,27 +31,37 @@ io.on('connection', (socket)=>{
         //joins user in a room
         socket.join(newUser.roomname)
 
+        // emit users in room
         io.to(newUser.roomname).emit('usersInRoom', {roomname: newUser.roomname, users: getRoomUsers(newUser.roomname)})
 
         callback();
         
     })
 
+    // user sends a message in chat room
     socket.on('sendMessage', (message, callback) =>{
         const user = getUser(socket.id)
 
+        //emit the message
         io.to(user.roomname).emit('message',{username: user.username, text:message});
+
+        // emit users in room
         io.to(user.roomname).emit('usersInRoom', {roomname: user.roomname, users: getRoomUsers(user.roomname)})
 
         callback();
     })
 
+    // user leaves room
     socket.on('disconnect', () =>{
-        console.log('disconnected')
         const user = removeUser(socket.id)
 
         if (user){
+
+            // send message to everyone in chat 
             io.to(user.roomname).emit('message', {username:'auto', text:`${user.username} has left the chat`})
+
+            // emit users in room
+            io.to(user.roomname).emit('usersInRoom', {roomname: user.roomname, users: getRoomUsers(user.roomname)})
         }
     })
 
