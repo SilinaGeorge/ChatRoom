@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 
-router.use(express.static(__dirname, '../client/public'));
+router.use(express.static(path.join(__dirname, '../client/public')));
 
 
 router.get('/', (req,res) => {
