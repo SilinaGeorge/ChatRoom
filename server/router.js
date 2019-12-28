@@ -3,11 +3,11 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 
-router.use(express.static(path.join(__dirname, '../client/public')));
+router.use(express.static(path.join(__dirname, '../client/build')));
 
 
 router.get('/', (req,res) => {
-    res.sendFile("client/public/index.html", {root: '../'});
+    res.sendFile("client/build/index.html", {root: '../'});
 });
 
 module.exports  = router
