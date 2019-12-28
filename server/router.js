@@ -6,7 +6,7 @@ express.static(path.join(__dirname, '../client/public'))
 const fs = require('fs')
 
 router.get('/', (req,res) => {
-    fs.access(path.join(__dirname, '../client/public'), function(err) {
+    fs.access(path.join(__dirname, '../client/public/index.html'), function(err) {
         if (err && err.code === 'ENOENT') {
           console.log('not found')
         }
