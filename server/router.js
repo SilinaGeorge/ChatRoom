@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 express.static(path.join(__dirname, '../client/public'))
+const fs = require('fs')
 
 router.get('/', (req,res) => {
     fs.access(path.join(__dirname, '../client/public'), function(err) {
