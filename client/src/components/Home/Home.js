@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom'
+import {setRoomname, setUsername} from '../actions/rootActions'
 
 // home page, join chat room
 const Home = () => {
@@ -9,10 +10,8 @@ const Home = () => {
     const dispatch = useDispatch();
 
     const onJoinClick =()=>{
-        
-
-        dispatch({type: 'SET_USERNAME', payload: {username}})
-        dispatch({type: 'SET_ROOMNAME', payload: {roomname}})
+        dispatch(setUsername(username))
+        dispatch(setRoomname(roomname))
     }
     return (
         <div className="card border-primary mb-3 mx-auto" style={{ width: "40vw", height: "50vh", marginTop: '25vh' }}>

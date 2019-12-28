@@ -1,3 +1,5 @@
+import {SET_USERNAME, SET_ROOMNAME} from '../actions/rootActions'
+
 const initialState={
     username: '',
     roomname: ''
@@ -7,9 +9,9 @@ const initialState={
 function rootReducer(state=initialState, action){
 
     switch(action.type){
-        case 'SET_USERNAME':
+        case SET_USERNAME:
             return {...state,username: action.payload.username}
-        case 'SET_ROOMNAME':
+        case SET_ROOMNAME:
             return {...state,roomname: action.payload.roomname}
         default:
             return state
