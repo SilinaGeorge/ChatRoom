@@ -8,8 +8,8 @@ import Room from './components/Room/Room'
 function App() {
   return (
     <Router>
-      <Route path='/'  component={Home} />
-      <Route path='/room'  component={Room} />
+      <Route path='/' exact component={Home} />
+      <Route path='/room' exact component={Room} />
     </Router>    
   );
 }
