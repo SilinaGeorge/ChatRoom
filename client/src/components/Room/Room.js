@@ -21,7 +21,7 @@ const Room = () => {
 
     const usernameSelector = useSelector((state) => state.username)
     const roomnameSelector = useSelector((state) => state.roomname)
-    const URL = 'localhost:5000'
+    const URL = 'https://chat--now.herokuapp.com/'
 
 
 
