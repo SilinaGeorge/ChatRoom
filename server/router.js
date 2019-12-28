@@ -5,8 +5,14 @@ const router = express.Router();
 express.static(path.join(__dirname, '../client/public'))
 
 router.get('/', (req,res) => {
-    console.log(path.join(__dirname, '../client').toString())
-    res.sendFile("index.html", {root: '../'});
+    fs.access(path.join(__dirname, '../client/public'), function(err) {
+        if (err && err.code === 'ENOENT') {
+          console.log('not found')
+        }
+        console.log('found')
+      });
+
+    res.sendFile("index.html", {root: '../client/public'});
 });
 
 module.exports  = router
