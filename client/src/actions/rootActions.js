@@ -6,13 +6,13 @@ export const SET_ROOMNAME = 'SET_ROOMNAME'
 export function setUsernameAction(username) {
     return {
       type: SET_USERNAME,
-      username
+      payload: username
     }
   }
 
 export function setRoomnameAction(roomname) {
     return {
       type: SET_ROOMNAME,
-      roomname
+      payload: roomname
     }
   }
