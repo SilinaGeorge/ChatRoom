@@ -10,6 +10,7 @@ function App() {
     <Router>
       <Route path='/' exact component={Home} />
       <Route path='/room' exact component={Room} />
+      {/* <Route component={NotFound} /> */}
     </Router>    
   );
 }
