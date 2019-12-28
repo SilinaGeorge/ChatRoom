@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(express.static(path.join(__dirname, '../client/build')));
 
 
-router.get('/', (req,res) => {
+router.get('/*', (req,res) => {
     res.sendFile("client/build/index.html", {root: '../'});
 });
 
