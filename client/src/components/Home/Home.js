@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {Link} from 'react-router-dom';
 import {setRoomnameAction, setUsernameAction} from '../../actions/rootActions';
 
 // home page, join chat room
@@ -12,6 +11,7 @@ const Home = () => {
     const onJoinClick =()=>{
         dispatch(setUsernameAction(username))
         dispatch(setRoomnameAction(roomname))
+        window.location = '/room'
     }
     return (
         <div className="card border-primary mb-3 mx-auto" style={{  maxWidth:"60vw", marginTop: '25vh' }}>
@@ -31,9 +31,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='col-md-12 text-center'>
-                    <Link to={'/room'}>
                         <button className="btn btn-primary" type="submit" onClick={onJoinClick}>Enter Room</button>
-                    </Link>
                    
                 </div>
             </form>
