@@ -89,16 +89,16 @@ const Room = () => {
                 <Header roomname={roomname}></Header>
             </div>
             <div className='row'>
-                <div className='col-2 bg-dark'>
+                <div className='bg-dark col-3'>
                     <UserList userList={users} roomname={roomname}></UserList>
                 </div>
 
-                <div className='col-10'>
+                <div className='col-9'>
                     <DisplayMessages messages={messages} username={username}></DisplayMessages>
                 
                 </div>
             </div>
-            <div>
+            <div className='row'>
             <MessageBar message={message} setMessage={setMessage} sendMessage={sendMessage}></MessageBar>
 
             </div>

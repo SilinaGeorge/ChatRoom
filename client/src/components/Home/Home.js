@@ -14,7 +14,7 @@ const Home = () => {
         dispatch(setRoomnameAction(roomname))
     }
     return (
-        <div className="card border-primary mb-3 mx-auto" style={{ width: "40vw", height: "50vh", marginTop: '25vh' }}>
+        <div className="card border-primary mb-3 mx-auto" style={{  maxWidth:"60vw", marginTop: '25vh' }}>
             <div className='card-header text-center'>Chat Now!</div>
             <div className="card-body">
                 <form>
