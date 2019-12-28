@@ -6,7 +6,7 @@ const Message = ({ message: { username, text }, currentUser }) => {
 
     currentUser = currentUser.trim().toLowerCase();
 
-    if (currentUser == username) {
+    if (currentUser === username) {
         isSentByCurrentUser = true;
     }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const MessageBar = ({message, setMessage, sendMessage}) => (
-    <div className="input-group mb-3">
+    <div className="input-group mb-3" style={{bottom: '0'}}>
     <input type="text" className="form-control" maxLength='200' placeholder="type your message here, use emojis too"
     value={message}
     onChange={(event)=> setMessage(event.target.value)}
