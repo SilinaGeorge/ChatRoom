@@ -1,0 +1,4 @@
+FROM webapp.io/node:18
+WORKDIR server
+RUN npm install --force
+RUN node app.js
