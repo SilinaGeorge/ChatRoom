@@ -41,7 +41,7 @@ const Room = () => {
             socket.off() // turn off instance of socket
         }
 
-    }, [URL, usernameSelector, roomnameSelector]); // useEffect will only execute when any of these 3 variables change
+    }, [URL, usernameSelector, roomnameSelector]);
 
     // listen for new messages and new users
     useEffect(() => {

@@ -17,7 +17,7 @@ const io = socketio(server,
         cors: {
             origin: [process.env.CLIENT_URL],
             credentials:true, 
-            transports: ['websocket', 'polling'],
+            transports: ['websocket', 'polling']
         },
         allowEIO3: true
       } );
