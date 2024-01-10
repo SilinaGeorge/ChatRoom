@@ -5,7 +5,7 @@ A chatroom application that incluces the use of emojis. Make a room and tell you
 
 ## link to website
 https://chat-now-z0eq.onrender.com/  
-Initial call to server may take long.
+Initial call to server may take long because of web hosting limitations.
 
 ## How to run
 - Go to /ChatRoom/client, run `npm install` then `npm start`, browser will open up to http://localhost:3000<br />
