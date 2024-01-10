@@ -21,9 +21,7 @@ const Room = () => {
 
     const usernameSelector = useSelector((state) => state.username)
     const roomnameSelector = useSelector((state) => state.roomname)
-    const URL = 'localhost:5000'
-
-
+    const URL = process.env.REACT_APP_SERVER_URL 
 
     useEffect(() => {
         socket = io(URL)
@@ -43,7 +41,7 @@ const Room = () => {
             socket.off() // turn off instance of socket
         }
 
-    }, [URL, usernameSelector, roomnameSelector]); // useEffect will only execute when any of these 3 variables change
+    }, [URL, usernameSelector, roomnameSelector]);
 
     // listen for new messages and new users
     useEffect(() => {

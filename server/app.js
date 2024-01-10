@@ -3,6 +3,8 @@ const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
 const router = require('./router');
+const cors = require('cors')
+require("dotenv").config();
 
 const {addUser, getUser, removeUser, getRoomUsers} = require( './users.js')
 
@@ -10,7 +12,15 @@ const app = express();
 
 // create socket and server
 const server =http.createServer(app);
-const io = socketio(server);
+const io = socketio(server,
+    {
+        cors: {
+            origin: [process.env.CLIENT_URL],
+            credentials:true, 
+            transports: ['websocket', 'polling']
+        },
+        allowEIO3: true
+      } );
 
 io.on('connection', (socket)=>{
 
